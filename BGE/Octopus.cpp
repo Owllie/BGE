@@ -32,9 +32,14 @@ bool Octopus::Initialise()
 	physicsFactory->CreateGroundPhysics();
 	physicsFactory->CreateCameraPhysics();
 
-	shared_ptr<PhysicsController> box = physicsFactory->CreateBox(1, 1, 4, glm::vec3(5, 5, 0), glm::quat());
-
-	setGravity();
+	// Loop to create a stack of ragdolls cause who doesn't like ragdolls
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			blahh = physicsFactory->CreateCapsuleRagdoll(glm::vec3(i, j, 0));
+		}
+	}
 
 	if (!Game::Initialise()) {
 		return false;
