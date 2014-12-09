@@ -41,6 +41,8 @@
 #include "Utils.h"
 #include "VRGame2.h"
 #include "SDL_syswm.h"
+#include "VRGame1.h"
+#include "GravityGame.h"
 
 using namespace BGE;
 

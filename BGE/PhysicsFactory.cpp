@@ -100,9 +100,9 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateSphere(float radius, glm::ve
 	btRigidBody * body = new btRigidBody(fallRigidBodyCI);
 	if (kinematic)
 	{
-		body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
-		body->setActivationState(DISABLE_DEACTIVATION);
+		body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);		
 	}
+	body->setActivationState(DISABLE_DEACTIVATION);
 	//body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	dynamicsWorld->addRigidBody(body);
 
@@ -141,9 +141,9 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateBox(float width, float heigh
 	body->setFriction(567);
 	if (kinematic)
 	{
-		body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
-		body->setActivationState(DISABLE_DEACTIVATION);
+		body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);		
 	}
+	body->setActivationState(DISABLE_DEACTIVATION);
 	dynamicsWorld->addRigidBody(body);
 
 	// Create the physics component and add it to the box
@@ -168,21 +168,23 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateCylinder(float radius, float
 
 	// This is a container for the box model
 	shared_ptr<GameComponent> cyl = make_shared<Cylinder>(radius, height);
-	cyl->Initialise();
-	cyl->transform->position = pos;
+	//cyl->Initialise();
 	if (attachToGame)
 	{
 		Game::Instance()->Attach(cyl);
 	}
 	// Create the rigid body
-	btDefaultMotionState * motionState = new btDefaultMotionState(btTransform(GLToBtQuat(quat), GLToBtVector(pos)));			
+
+	btTransform transform = btTransform(GLToBtQuat(quat), GLToBtVector(pos));
+	glm::quat q = BtToGLQuat(transform.getRotation());
+	btDefaultMotionState * motionState = new btDefaultMotionState(transform);			
 	btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(mass,  motionState, shape, inertia);
 	btRigidBody * body = new btRigidBody(rigidBodyCI);
 	if (kinematic)
 	{
-		body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
-		body->setActivationState(DISABLE_DEACTIVATION);
+		body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);		
 	}
+	body->setActivationState(DISABLE_DEACTIVATION);
 	dynamicsWorld->addRigidBody(body);
 
 	// Create the physics component and add it to the box
@@ -223,9 +225,8 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateVehicle(glm::vec3 position)
 	float wheelOffset = 2.0f;
 
 	shared_ptr<PhysicsController> chassis = CreateBox(width, height, length, position, glm::quat());
-
 	shared_ptr<PhysicsController> wheel;
-	glm::quat q =  glm::angleAxis(glm::half_pi<float>(), glm::vec3(1, 0, 0));
+	glm::quat q =  glm::angleAxis(90.0f, glm::vec3(1, 0, 0));
 
 	glm::vec3 offset;
 	btHingeConstraint * hinge;
@@ -248,6 +249,7 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateVehicle(glm::vec3 position)
 	offset = glm::vec3(+ (width / 2 - wheelRadius), 0, + (length / 2 + wheelOffset));
 	wheel = CreateCylinder(wheelRadius, wheelWidth, position + offset, q);	 
 	hinge = new btHingeConstraint(* chassis->rigidBody, * wheel->rigidBody, GLToBtVector(offset),btVector3(0,0, 0), btVector3(0,0,1), btVector3(0,1,0), true);
+	hinge->enableAngularMotor(true, -10, 10);	
 	dynamicsWorld->addConstraint(hinge);
 
 	return chassis;
@@ -383,8 +385,10 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateCapsuleRagdoll(glm::vec3 pos
 	dynamicsWorld->addConstraint(head_spine);
 
 	localA.setIdentity(); localB.setIdentity();
-	localA.getBasis().setEulerZYX(0, 0, -glm::quarter_pi<float>() * 5); localA.setOrigin(btVector3(btScalar(-1.5), btScalar(-2.5), btScalar(0.)));
-	localB.getBasis().setEulerZYX(0, 0, -glm::quarter_pi<float>() * 5); localB.setOrigin(btVector3(btScalar(0.), btScalar(2.5), btScalar(0.)));
+	localA.getBasis().setEulerZYX(0, 0, -glm::quarter_pi<float>() * 5); 
+	localA.setOrigin(btVector3(btScalar(-1.5), btScalar(-2.5), btScalar(0.)));
+	localB.getBasis().setEulerZYX(0, 0, -glm::quarter_pi<float>() * 5); 
+	localB.setOrigin(btVector3(btScalar(0.), btScalar(2.5), btScalar(0.)));
 	pelvis_left_upper_leg = new btConeTwistConstraint(*bodypart_pelvis->rigidBody, *bodypart_left_upper_leg->rigidBody, localA, localB);
 	pelvis_left_upper_leg->setLimit(glm::quarter_pi<float>(), glm::half_pi<float>(), 0);
 	dynamicsWorld->addConstraint(pelvis_left_upper_leg);
