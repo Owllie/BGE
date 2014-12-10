@@ -26,31 +26,29 @@ Octopus::~Octopus(void)
 {
 }
 
+shared_ptr<PhysicsController> octopus;
 
 bool Octopus::Initialise()
 {
+
 	physicsFactory->CreateGroundPhysics();
 	physicsFactory->CreateCameraPhysics();
 
-	// Loop to create a stack of ragdolls cause who doesn't like ragdolls
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 2; j++)
-		{
-			blahh = physicsFactory->CreateCapsuleRagdoll(glm::vec3(i, j, 0));
-		}
-	}
+	setGravity(glm::vec3(0, -9, 0));
 
 	if (!Game::Initialise()) {
 		return false;
 	}
 
-	return true;
+	glm::vec3 position = glm::vec3(2,2,2);
+
+	physicsFactory->CreateOctopus(position);
+	
 }
 
 void BGE::Octopus::Update(float timedelta)
 {
-	Game::Update(timedelta);
+	Game::Update();
 }
 
 void BGE::Octopus::Cleanup()

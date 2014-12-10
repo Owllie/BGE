@@ -115,6 +115,7 @@
     <ClCompile Include="LazerBeam.cpp" />
     <ClCompile Include="LeapHands.cpp" />
     <ClCompile Include="ObstacleAvoidanceScenario.cpp" />
+    <ClCompile Include="Octopus.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleEffect.cpp" />
     <ClCompile Include="PathFollowingScenario.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="LazerBeam.h" />
     <ClInclude Include="LeapHands.h" />
     <ClInclude Include="ObstacleAvoidanceScenario.h" />
+    <ClInclude Include="Octopus.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleEffect.h" />
     <ClInclude Include="PathFollowingScenario.h" />

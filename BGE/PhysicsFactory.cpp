@@ -444,3 +444,298 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateCapsuleRagdoll(glm::vec3 pos
 
 	return bodypart_spine;
 }
+
+shared_ptr<PhysicsController> PhysicsFactory::CreateOctopus(glm::vec3 position)
+{
+
+	//Create body and mandibles
+	shared_ptr<PhysicsController> body = CreateSphere(10.0f,
+		glm::vec3(position.x, position.y + 5, position.z),
+		glm::quat());
+
+	shared_ptr<PhysicsController> mandible_1_BJ = CreateSphere(1.5f,
+		glm::vec3(position.x + 2, position.y + 0, position.z + 2),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_1_sec_1 = CreateCapsule(1.5, 1.75,
+		glm::vec3(10, 0, 10),
+		glm::angleAxis(90.0f, glm::vec3(position.x + - 1, position.y, position.z + 1)));
+
+	shared_ptr<PhysicsController> manidible_1_sec_2 = CreateSphere(1.5f,
+		glm::vec3(position.x + 14, position.y, position.z + 14),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_1_sec_3 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x + 18, position.y, position.z + 18),
+		glm::angleAxis(90.0f, glm::vec3(-1, 0, 1)));
+
+	shared_ptr<PhysicsController> manidible_1_sec_4 = CreateSphere(1.5f,
+		glm::vec3(position.x + 22, position.y, position.z + 22),
+		glm::quat());
+
+
+
+	shared_ptr<PhysicsController> mandible_2_BJ = CreateSphere(1.5f,
+		glm::vec3(position.x - 2, position.y, position.z - 2),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_2_sec_1 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x - 10, position.y, position.z - 10),
+		glm::angleAxis(90.0f, glm::vec3(-1, 0, 1)));
+
+	shared_ptr<PhysicsController> manidible_2_sec_2 = CreateSphere(1.5f,
+		glm::vec3(position.x - 14, position.y, position.z- 14),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_2_sec_3 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x - 18, position.y, position.z - 18),
+		glm::angleAxis(90.0f, glm::vec3(-1, 0, 1)));
+
+	shared_ptr<PhysicsController> manidible_2_sec_4 = CreateSphere(1.5f,
+		glm::vec3(position.x - 22, position.y, position.z - 22),
+		glm::quat());
+
+
+
+	shared_ptr<PhysicsController> mandible_3_BJ = CreateSphere(1.5f,
+		glm::vec3(position.x + 2, position.y, position.z - 2),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_3_sec_1 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x + 10, position.y, position.z - 10),
+		glm::angleAxis(90.0f, glm::vec3(-1, 0, -1)));
+
+	shared_ptr<PhysicsController> manidible_3_sec_2 = CreateSphere(1.5f,
+		glm::vec3(position.x + 14, position.y, position.z - 14),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_3_sec_3 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x + 18, position.y, position.z - 18),
+		glm::angleAxis(90.0f, glm::vec3(-1, 0, -1)));
+
+	shared_ptr<PhysicsController> manidible_3_sec_4 = CreateSphere(1.5f,
+		glm::vec3(position.x + 22, position.y, position.z - 22),
+		glm::quat());
+
+
+
+	shared_ptr<PhysicsController> mandible_4_BJ = CreateSphere(1.5f,
+		glm::vec3(position.x - 2, position.y, position.z + 2),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_4_sec_1 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x - 10, position.y, position.z + 10),
+		glm::angleAxis(90.0f, glm::vec3(-1, 0, -1)));
+
+	shared_ptr<PhysicsController> manidible_4_sec_2 = CreateSphere(1.5f,
+		glm::vec3(position.x - 14, position.y, position.z + 14),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_4_sec_3 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x - 18, position.y, position.z + 18),
+		glm::angleAxis(90.0f, glm::vec3(-1, 0, -1)));
+
+	shared_ptr<PhysicsController> manidible_4_sec_4 = CreateSphere(1.5f,
+		glm::vec3(position.x - 22, position.y, position.z + 22),
+		glm::quat());
+
+
+
+	shared_ptr<PhysicsController> mandible_5_BJ = CreateSphere(1.5f,
+		glm::vec3(position.x, position.y, position.z - 2),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_5_sec_1 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x, position.y, position.z - 15),
+		glm::angleAxis(90.0f, glm::vec3(1, 0, 0)));
+
+	shared_ptr<PhysicsController> manidible_5_sec_2 = CreateSphere(1.5f,
+		glm::vec3(position.x, position.y, position.z - 21),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_5_sec_3 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x, position.y, position.z - 27),
+		glm::angleAxis(90.0f, glm::vec3(1, 0, 0)));
+
+	shared_ptr<PhysicsController> manidible_5_sec_4 = CreateSphere(1.5f,
+		glm::vec3(position.x, position.y, position.z - 33),
+		glm::quat());
+
+
+
+	shared_ptr<PhysicsController> mandible_6_BJ = CreateSphere(1.5f,
+		glm::vec3(position.x, position.y, position.z + 2),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_6_sec_1 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x, position.y, position.z + 15),
+		glm::angleAxis(90.0f, glm::vec3(1, 0, 0)));
+
+	shared_ptr<PhysicsController> manidible_6_sec_2 = CreateSphere(1.5f,
+		glm::vec3(position.x, position.y, position.z + 21),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_6_sec_3 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x, position.y, position.z + 27),
+		glm::angleAxis(90.0f, glm::vec3(1, 0, 0)));
+
+	shared_ptr<PhysicsController> manidible_6_sec_4 = CreateSphere(1.5f,
+		glm::vec3(position.x, position.y, position.z + 33),
+		glm::quat());
+
+
+
+	shared_ptr<PhysicsController> mandible_7_BJ = CreateSphere(1.5f,
+		glm::vec3(position.x + 2, position.y, position.z),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_7_sec_1 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x + 15, position.y, position.z),
+		glm::angleAxis(90.0f, glm::vec3(0, 0, 1)));
+
+	shared_ptr<PhysicsController> manidible_7_sec_2 = CreateSphere(1.5f,
+		glm::vec3(position.x + 21, position.y, position.z),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_7_sec_3 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x + 27, position.y, position.z),
+		glm::angleAxis(90.0f, glm::vec3(0, 0, 1)));
+
+	shared_ptr<PhysicsController> manidible_7_sec_4 = CreateSphere(1.5f,
+		glm::vec3(position.x + 33, position.y, position.z),
+		glm::quat());
+
+
+
+	shared_ptr<PhysicsController> mandible_8_BJ = CreateSphere(1.5f,
+		glm::vec3(position.x - 2, position.y, position.z),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_8_sec_1 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x - 15, position.y, position.z),
+		glm::angleAxis(90.0f, glm::vec3(0, 0, 1)));
+
+	shared_ptr<PhysicsController> manidible_8_sec_2 = CreateSphere(1.5f,
+		glm::vec3(position.x - 21, position.y, position.z),
+		glm::quat());
+
+	shared_ptr<PhysicsController> manidible_8_sec_3 = CreateCapsule(1.5, 1.75,
+		glm::vec3(position.x - 27, position.y, position.z),
+		glm::angleAxis(90.0f, glm::vec3(0, 0, 1)));
+
+	shared_ptr<PhysicsController> manidible_8_sec_4 = CreateSphere(1.5f,
+		glm::vec3(position.x - 33, position.y, position.z),
+		glm::quat());
+
+
+
+	btHingeConstraint * hinge33 = new btHingeConstraint(*mandible_1_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(1), btScalar(1), btScalar(1)), btVector3(btScalar(4), btScalar(-8.5), btScalar(4)), btVector3(1, 1, 1), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge33);
+	btHingeConstraint * hinge34 = new btHingeConstraint(*mandible_2_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(-1), btScalar(1), btScalar(-1)), btVector3(btScalar(-4), btScalar(-8.5), btScalar(-4)), btVector3(-1, 1, -1), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge34);
+	btHingeConstraint * hinge35 = new btHingeConstraint(*mandible_3_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(1), btScalar(1), btScalar(-1)), btVector3(btScalar(4), btScalar(-8.5), btScalar(-4)), btVector3(1, 1, -1), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge35);
+	btHingeConstraint * hinge36 = new btHingeConstraint(*mandible_4_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(-1), btScalar(1), btScalar(1)), btVector3(btScalar(-4), btScalar(-8.5), btScalar(4)), btVector3(-1, 1, 1), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge36);
+	btHingeConstraint * hinge37 = new btHingeConstraint(*mandible_5_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(-1)), btVector3(btScalar(0), btScalar(-8.5), btScalar(-4)), btVector3(0, 1, -1), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge37);
+	btHingeConstraint * hinge38 = new btHingeConstraint(*mandible_6_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(1)), btVector3(btScalar(0), btScalar(-8.5), btScalar(4)), btVector3(0, 1, 1), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge38);
+	btHingeConstraint * hinge39 = new btHingeConstraint(*mandible_7_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(1), btScalar(1), btScalar(0)), btVector3(btScalar(4), btScalar(-8.5), btScalar(0)), btVector3(1, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge39);
+	btHingeConstraint * hinge40 = new btHingeConstraint(*mandible_8_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(-1), btScalar(1), btScalar(0)), btVector3(btScalar(-4), btScalar(-8.5), btScalar(0)), btVector3(-1, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge40);
+
+	btHingeConstraint * hinge = new btHingeConstraint(*mandible_1_BJ->rigidBody, *manidible_1_sec_1->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 0, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge);
+	btHingeConstraint * hinge2 = new btHingeConstraint(*manidible_1_sec_1->rigidBody, *manidible_1_sec_2->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge2);
+	btHingeConstraint * hinge3 = new btHingeConstraint(*manidible_1_sec_2->rigidBody, *manidible_1_sec_3->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge3);
+	btHingeConstraint * hinge4 = new btHingeConstraint(*manidible_1_sec_3->rigidBody, *manidible_1_sec_4->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge4);
+
+	btHingeConstraint * hinge5 = new btHingeConstraint(*mandible_2_BJ->rigidBody, *manidible_2_sec_1->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 0, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge5);
+	btHingeConstraint * hinge6 = new btHingeConstraint(*manidible_2_sec_1->rigidBody, *manidible_2_sec_2->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge6);
+	btHingeConstraint * hinge7 = new btHingeConstraint(*manidible_2_sec_2->rigidBody, *manidible_2_sec_3->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge7);
+	btHingeConstraint * hinge8 = new btHingeConstraint(*manidible_2_sec_3->rigidBody, *manidible_2_sec_4->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge8);
+
+	btHingeConstraint * hinge9 = new btHingeConstraint(*mandible_3_BJ->rigidBody, *manidible_3_sec_1->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 0, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge9);
+	btHingeConstraint * hinge10 = new btHingeConstraint(*manidible_3_sec_1->rigidBody, *manidible_3_sec_2->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge10);
+	btHingeConstraint * hinge11 = new btHingeConstraint(*manidible_3_sec_2->rigidBody, *manidible_3_sec_3->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge11);
+	btHingeConstraint * hinge12 = new btHingeConstraint(*manidible_3_sec_3->rigidBody, *manidible_3_sec_4->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge12);
+
+	btHingeConstraint * hinge13 = new btHingeConstraint(*mandible_4_BJ->rigidBody, *manidible_4_sec_1->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 0, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge13);
+	btHingeConstraint * hinge14 = new btHingeConstraint(*manidible_4_sec_1->rigidBody, *manidible_4_sec_2->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge14);
+	btHingeConstraint * hinge15 = new btHingeConstraint(*manidible_4_sec_2->rigidBody, *manidible_4_sec_3->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge15);
+	btHingeConstraint * hinge16 = new btHingeConstraint(*manidible_4_sec_3->rigidBody, *manidible_4_sec_4->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge16);
+
+	btHingeConstraint * hinge17 = new btHingeConstraint(*mandible_5_BJ->rigidBody, *manidible_5_sec_1->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 0, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge17);
+	btHingeConstraint * hinge18 = new btHingeConstraint(*manidible_5_sec_1->rigidBody, *manidible_5_sec_2->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge18);
+	btHingeConstraint * hinge19 = new btHingeConstraint(*manidible_5_sec_2->rigidBody, *manidible_5_sec_3->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge19);
+	btHingeConstraint * hinge28 = new btHingeConstraint(*manidible_5_sec_3->rigidBody, *manidible_5_sec_4->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge28);
+
+	btHingeConstraint * hinge20 = new btHingeConstraint(*mandible_6_BJ->rigidBody, *manidible_6_sec_1->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 0, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge20);
+	btHingeConstraint * hinge21 = new btHingeConstraint(*manidible_6_sec_1->rigidBody, *manidible_6_sec_2->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge21);
+	btHingeConstraint * hinge22 = new btHingeConstraint(*manidible_6_sec_2->rigidBody, *manidible_6_sec_3->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge22);
+	btHingeConstraint * hinge23 = new btHingeConstraint(*manidible_6_sec_3->rigidBody, *manidible_6_sec_4->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge23);
+
+	btHingeConstraint * hinge24 = new btHingeConstraint(*mandible_7_BJ->rigidBody, *manidible_7_sec_1->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 0, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge24);
+	btHingeConstraint * hinge25 = new btHingeConstraint(*manidible_7_sec_1->rigidBody, *manidible_7_sec_2->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge25);
+	btHingeConstraint * hinge26 = new btHingeConstraint(*manidible_7_sec_2->rigidBody, *manidible_7_sec_3->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge26);
+	btHingeConstraint * hinge27 = new btHingeConstraint(*manidible_7_sec_3->rigidBody, *manidible_7_sec_4->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge27);
+
+	btHingeConstraint * hinge29 = new btHingeConstraint(*mandible_8_BJ->rigidBody, *manidible_8_sec_1->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 0, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge29);
+	btHingeConstraint * hinge30 = new btHingeConstraint(*manidible_8_sec_1->rigidBody, *manidible_8_sec_2->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge30);
+	btHingeConstraint * hinge31 = new btHingeConstraint(*manidible_8_sec_2->rigidBody, *manidible_8_sec_3->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge31);
+	btHingeConstraint * hinge32 = new btHingeConstraint(*manidible_8_sec_3->rigidBody, *manidible_8_sec_4->rigidBody, btVector3(btScalar(0), btScalar(1), btScalar(0)), btVector3(btScalar(0), btScalar(-4), btScalar(0)), btVector3(0, 1, 0), btVector3(0, 1, 0), true);
+	dynamicsWorld->addConstraint(hinge32);
+
+	body->rigidBody->setMassProps(btScalar(4), btVector3(0, 0, 0));
+
+	hinge33->setLimit(btScalar(0), btScalar(0));
+	hinge34->setLimit(btScalar(0), btScalar(0));
+	hinge35->setLimit(btScalar(0), btScalar(0));
+	hinge36->setLimit(btScalar(0), btScalar(0));
+	hinge37->setLimit(btScalar(0), btScalar(0));
+	hinge38->setLimit(btScalar(0), btScalar(0));
+	hinge39->setLimit(btScalar(0), btScalar(0));
+	hinge40->setLimit(btScalar(0), btScalar(0));
+
+	hinge33->enableAngularMotor(true, 10, 10);
+	hinge34->enableAngularMotor(true, 10, 10);
+	hinge35->enableAngularMotor(true, 10, 10);
+	hinge36->enableAngularMotor(true, 10, 10);
+	hinge37->enableAngularMotor(true, 10, 10);
+	hinge38->enableAngularMotor(true, 10, 10);
+	hinge39->enableAngularMotor(true, 10, 10);
+	hinge40->enableAngularMotor(true, 10, 10);
+	return body;
+}
