@@ -445,10 +445,11 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateCapsuleRagdoll(glm::vec3 pos
 	return bodypart_spine;
 }
 
+//Assignment attempt, The function only takes in the position of where you would like top spwan the octopus
 shared_ptr<PhysicsController> PhysicsFactory::CreateOctopus(glm::vec3 position)
 {
 
-	//Create body and mandibles
+	//Create body and mandibles, made of spheres and capsules
 	shared_ptr<PhysicsController> body = CreateSphere(10.0f,
 		glm::vec3(position.x, position.y + 5, position.z),
 		glm::quat());
@@ -628,7 +629,7 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateOctopus(glm::vec3 position)
 		glm::quat());
 
 
-
+	//Hinges joints being created
 	btHingeConstraint * hinge33 = new btHingeConstraint(*mandible_1_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(1), btScalar(1), btScalar(1)), btVector3(btScalar(4), btScalar(-8.5), btScalar(4)), btVector3(1, 1, 1), btVector3(0, 1, 0), true);
 	dynamicsWorld->addConstraint(hinge33);
 	btHingeConstraint * hinge34 = new btHingeConstraint(*mandible_2_BJ->rigidBody, *body->rigidBody, btVector3(btScalar(-1), btScalar(1), btScalar(-1)), btVector3(btScalar(-4), btScalar(-8.5), btScalar(-4)), btVector3(-1, 1, -1), btVector3(0, 1, 0), true);
@@ -719,7 +720,7 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateOctopus(glm::vec3 position)
 	dynamicsWorld->addConstraint(hinge32);
 
 	body->rigidBody->setMassProps(btScalar(4), btVector3(0, 0, 0));
-
+	//setting limits so they aren't comletely uncontrollable
 	hinge33->setLimit(btScalar(0), btScalar(0));
 	hinge34->setLimit(btScalar(0), btScalar(0));
 	hinge35->setLimit(btScalar(0), btScalar(0));
@@ -728,7 +729,7 @@ shared_ptr<PhysicsController> PhysicsFactory::CreateOctopus(glm::vec3 position)
 	hinge38->setLimit(btScalar(0), btScalar(0));
 	hinge39->setLimit(btScalar(0), btScalar(0));
 	hinge40->setLimit(btScalar(0), btScalar(0));
-
+	//attaempt at enabling motors
 	hinge33->enableAngularMotor(true, 10, 10);
 	hinge34->enableAngularMotor(true, 10, 10);
 	hinge35->enableAngularMotor(true, 10, 10);
